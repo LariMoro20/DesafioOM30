@@ -36,7 +36,7 @@
       <td><?= $pac->CPF ?></td>
       <td><?= $pac->data_nasc ?></td>
       <td><a class='btnremovepac' idPac='<?=$pac->Id  ?>' href="#."><i class="fa fa-window-close"></i></a></td>
-      <td><a class='btneditpac' idPac='<?=$pac->Id  ?>' href="#."><i class="fa fa-window-close"></i></a></td>
+      <td><a class='btneditpac' idPac='<?=$pac->Id  ?>' href="#."><i class="fa fa-pencil-square-o"></i></a></td>
 
     </tr>
    <?php } ?>
