@@ -15,12 +15,9 @@ class db_model extends CI_Model {
 	}
 	
 	public function addPacientes($POST){
-		if($POST && !$this->db_model->isDataEmpty($POST)){
-
 			$dataNasc = DateTime::createFromFormat('d/m/Y', $POST['data_nasc']);
 			$data = array(
 				'nome' => $POST['nome'],
-				//'foto' => $POST['foto'],
 				'nome_mae' => $POST['nome_mae'],
 				'data_nasc' => $dataNasc->format('Y-m-d H:i:s'),
 				'CPF' => $POST['CPF'],
@@ -33,50 +30,40 @@ class db_model extends CI_Model {
 				$retorno['msg']='Adicionado com sucesso!';
 				$retorno['status']=true;
 				$retorno['id']=$Id;
-				return $retorno;
 			}
 			else{
 				$retorno['msg']='Houve algum erro!';
 				$retorno['status']=false;
 				$retorno['id']=null;
-				return $retorno;
 			}
-		}else{
-			$retorno['msg']='Faltam dados para cadastrar!';
-			$retorno['status']=false;
-			$retorno['id']=null;
-			return $retorno;
-		}
+		
+		return json_encode($retorno);
 	}
 	
 	public function updatePacientes($POST){
-		if($POST && !$this->db_model->isDataEmpty($POST)){
 			$data = array(
-				'nome' => $USER['nome'],
-				'foto' => $USER['foto'],
-				'nome_mae' => $USER['nome_mae'],
-				'data_nasc' => $USER['data_nasc'],
-				'CPF' => $USER['CPF'],
-				'CNS' => $USER['CNS'],
-				'endereco' => $USER['endereco'],
+				'nome' => $POST['nome'],
+				'nome_mae' => $POST['nome_mae'],
+				'data_nasc' => $POST['data_nasc'],
+				'CPF' => $POST['CPF'],
+				'CNS' => $POST['CNS'],
+				'endereco' => $POST['endereco'],
 				);
 			
-			$this->db->where('Id', $USER['Id']);
+			$this->db->where('Id', $POST['Id']);
 			if($this->db->update('pacientes', $data)){
 				$retorno['msg']='Sucesso!';
 				$retorno['status']=true;
-				return $retorno;
+				$retorno['id']=$POST['Id'];
+			
 			}
 			else{
 				$retorno['msg']='Houve algum erro!';
 				$retorno['status']=false;
-				return $retorno;
+				$retorno['id']=null;
 			}
-		}else{
-			$retorno['msg']='Faltam dados para atualizar!';
-			$retorno['status']=false;
-			return $retorno;
-		}
+			return json_encode($retorno);
+
 	}
 	public function deletePaciente($id){
 		if($id){
