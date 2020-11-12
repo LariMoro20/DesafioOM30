@@ -6,6 +6,23 @@ Esta é uma aplicação de cadastro de clientes, desenvolvida com o propósito d
 * Frameworks aplicados: CodeIgniter e Bootstrap;
 * Biblioteca: JQuery;
 
+Aplicação conta com:
+* Cadastro de pacientes com ;
+	* Foto;
+    * Nome Completo*;
+    * Nome Completo da Mãe*;
+    * Data de Nascimento*;
+    * CPF*;
+    * CNS*;
+    * Endereço completo*;
+
+* Edição de pacientes;
+* Visualização de pacientes;
+
+* Máscara para CPF, CNS e Data;
+* Busca de endereço por CEP via API ViaCEP **https://viacep.com.br/**;
+* Validação de CPF;
+* Validação de data;
 
 
 ## Requerimentos
