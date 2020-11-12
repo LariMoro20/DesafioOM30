@@ -3,9 +3,9 @@ Desafio OM30
 ###################
 
 Esta é uma aplicação de cadastro de clientes, desenvolvida com o propósito de demonstrar conhecimentos para a empresa.
-- Conhecimentos aplicados: PHP, MySQL, HTML, CSS e JavaScript.
-- Frameworks aplicados: CodeIgniter, Bootstrap.
-- Biblioteca: JQuery
+-  Conhecimentos aplicados: PHP, MySQL, HTML, CSS e JavaScript.
+-  Frameworks aplicados: CodeIgniter, Bootstrap.
+-  Biblioteca: JQuery
 
 *******************
 Release Information
