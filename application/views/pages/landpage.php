@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h1>Lista de pacientes!</h1>
+      <h1>Lista de pacientes</h1>
     </div>
     <div class="col-md-12 text-center margin-bt20">
       <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#addModal">
@@ -10,7 +10,7 @@
       </button>
       </div>
       <div class="col-md-12">
-      <table class="table">
+      <table class="table" id='pactable'>
         <thead>
           <tr>
             <th scope="col">Foto</th>

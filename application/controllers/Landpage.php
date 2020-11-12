@@ -14,6 +14,7 @@ class Landpage extends CI_Controller {
 			'pacientes'=>$this->db_model->getPacientes(),
 			);
 		$this->load->view('includes/design',$data);
+		$this->load->view('includes/header');
 		$this->load->view('pages/landpage');
 		$this->load->view('includes/footer');
 	}
