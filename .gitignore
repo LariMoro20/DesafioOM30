@@ -9,7 +9,7 @@ application/logs/*
 !application/*/.htaccess
 
 composer.lock
-
+bcit-ci-CodeIgniter-3.1.11-0-gb73eb19.zip
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
