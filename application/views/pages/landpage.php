@@ -73,7 +73,9 @@
 
                     <div class="form-group col-md-6">
                       <label for="CNS">CNS*</label>
-                      <input type="text" autocomplete="off" name='CNS' class="form-control" id="CNS" placeholder="CNS" required>
+                      <input type="text" autocomplete="off" name='CNS' class="form-control CNS" id="CNS" placeholder="CNS" required>
+                      <small id="CNSHelp" class="form-text text-muted">Exemplo: (000 0000 0000 0000)</small>
+
                     </div>
 
                     <div class="form-group col-md-12">
@@ -145,7 +147,10 @@
 
                     <div class="form-group col-md-6">
                       <label for="CNS">CNS*</label>
-                      <input type="text" name='CNS' class="form-control" id="CNSInput" placeholder="CNS" required>
+                      <input type="text" name='CNS' class="form-control CNS" id="CNSInput " placeholder="CNS" required>
+                      <small id="CNSHelp" class="form-text text-muted">Exemplo: (000 0000 0000 0000)</small>
+
+                    
                     </div>
 
                     <div class="form-group col-md-12">

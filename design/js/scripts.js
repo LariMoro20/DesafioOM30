@@ -1,6 +1,6 @@
 $(document).ready(function() {
-
  $('.datanasc').mask('00/00/0000');
+ $('.CNS').mask('000 0000 0000 0000');
 });
 
 function fMasc(objeto,mascara) {

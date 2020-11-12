@@ -16,12 +16,20 @@
           success: function(data) {
             console.log(data);
             data=JSON.parse(data);
+            if(data.status){
+                titulo='Adicionado!';
+            }else{
+                titulo='Revise os dados!'
+            }
             $.confirm({
-              title: 'Adicionado!',
+              title: titulo,
               content: data.msg,
               buttons: {
                 OK: function () {
-                  location.reload(); 
+                    if(data.status){
+                        location.reload();
+                    }
+                   
                 }
               }  
             });
@@ -29,10 +37,9 @@
           error:function(data) {
             $.confirm({
               title: 'Houve um erro!',
-              content: data.msg,
+              content: 'Confira os dados e tente novamente',
               buttons: {
                 OK: function () {
-                  location.reload(); 
                 }
               }  
             });
@@ -51,12 +58,19 @@
           data: formData,
           success: function(data) {
             data=JSON.parse(data);
+            if(data.status){
+                titulo='Adicionado!';
+            }else{
+                titulo='Revise os dados!'
+            }
             $.confirm({
-              title: 'Paciente modificado!',
+              title: titulo,
               content: data.msg,
               buttons: {
                 OK: function () {
-                  location.reload(); 
+                    if(data.status){
+                        location.reload();
+                    }
                 }
               }  
             });

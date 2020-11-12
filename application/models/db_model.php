@@ -21,15 +21,20 @@ class db_model extends CI_Model {
 		
 	}
 	
+
+	
+
 	public function addPacientes($POST){
+			$valida=$this->db_model->validaDados($POST);
+			if($valida['status']){
 			$dataNasc = DateTime::createFromFormat('d/m/Y', $POST['data_nasc']);
 			$data = array(
-				'nome' => $POST['nome'],
-				'nome_mae' => $POST['nome_mae'],
+				'nome' => utf8_encode($POST['nome']),
+				'nome_mae' => utf8_encode($POST['nome_mae']),
 				'data_nasc' => $dataNasc->format('Y-m-d'),
 				'CPF' => $POST['CPF'],
 				'CNS' => $POST['CNS'],
-				'endereco' => $POST['endereco'],
+				'endereco' => utf8_encode($POST['endereco']),
 				);
 
 			if($this->db->insert('pacientes', $data)){
@@ -43,19 +48,26 @@ class db_model extends CI_Model {
 				$retorno['status']=false;
 				$retorno['id']=null;
 			}
+		}else{
+			$retorno['msg']=$valida['msg'];
+			$retorno['status']=false;
+			$retorno['id']=null;
+		}
 		
 		return json_encode($retorno);
 	}
 	
 	public function updatePacientes($POST){
+		$valida=$this->db_model->validaDados($POST);
+		if($valida['status']){
 			$dataNasc = DateTime::createFromFormat('d/m/Y', $POST['data_nasc']);
 			$data = array(
-				'nome' => $POST['nome'],
-				'nome_mae' => $POST['nome_mae'],
+				'nome' => utf8_encode($POST['nome']),
+				'nome_mae' => utf8_encode($POST['nome_mae']),
 				'data_nasc' => $dataNasc->format('Y-m-d'),
 				'CPF' => $POST['CPF'],
 				'CNS' => $POST['CNS'],
-				'endereco' => $POST['endereco'],
+				'endereco' => utf8_encode($POST['endereco']),
 				);
 			$this->db->where('Id', $POST['Id']);
 			if($this->db->update('pacientes', $data)){
@@ -65,6 +77,11 @@ class db_model extends CI_Model {
 			}
 			else{
 				$retorno['msg']='Houve algum erro!';
+				$retorno['status']=false;
+				$retorno['id']=null;
+			}
+		}else{
+				$retorno['msg']=$valida['msg'];
 				$retorno['status']=false;
 				$retorno['id']=null;
 			}
@@ -116,6 +133,48 @@ class db_model extends CI_Model {
 	}
 
 
+	public function validaDados($dados){
+		$retorno['status'] 	= true;
+		$retorno['msg']		= 'Dados corretos!';
+
+		if($this->db_model->validaData($dados['data_nasc'], 'd/m/Y')){
+			if($this->db_model->validaCPF($dados['CPF'])){
+			}else{
+				$retorno['status'] 	= false;
+				$retorno['msg']		= 'CPF incorreto!';
+			}
+		}else{
+			$retorno['status'] 	= false;
+			$retorno['msg']		= 'Data incorreta!';
+		}
+		return $retorno;
+	}
+
+	public function validaData($date, $format = 'Y-m-d H:i:s'){
+		$d = DateTime::createFromFormat($format, $date);
+		return $d && $d->format($format) == $date;
+	}
+
+	public function validaCPF($cpf) {
+		$cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+		if (strlen($cpf) != 11) {
+			return false;
+		}
+		if (preg_match('/(\d)\1{10}/', $cpf)) {
+			return false;
+		}
+		for ($t = 9; $t < 11; $t++) {
+			for ($d = 0, $c = 0; $c < $t; $c++) {
+				$d += $cpf[$c] * (($t + 1) - $c);
+			}
+			$d = ((10 * $d) % 11) % 10;
+			if ($cpf[$c] != $d) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public function isDataEmpty($arrayOfData, $safeValues = false){
 		foreach ($arrayOfData as $key => $value) {
 			if($safeValues){
