@@ -1,0 +1,132 @@
+
+        <footer>
+        </footer>
+        <script src="<?= DESIGN_PATH ?>js/scripts.js"></script>
+        <script src="<?= DESIGN_PATH ?>js/CEPValidator.js"></script>
+        <script>
+        $('form#addPaciente').on( 'submit', function (e) { 
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+          url: '<?= BASE_URL ?>landpage/addPaciente',
+          type: "POST",
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function(data) {
+            console.log(data);
+            data=JSON.parse(data);
+            $.confirm({
+              title: 'Adicionado!',
+              content: data.msg,
+              buttons: {
+                OK: function () {
+                  location.reload(); 
+                }
+              }  
+            });
+          },
+          error:function(data) {
+            $.confirm({
+              title: 'Houve um erro!',
+              content: data.msg,
+              buttons: {
+                OK: function () {
+                  location.reload(); 
+                }
+              }  
+            });
+          }
+      });
+   });
+  
+   $('form#editPaciente').on( 'submit', function (e) { 
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+          url: '<?= BASE_URL ?>landpage/editPaciente',
+          type: "POST",
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function(data) {
+            data=JSON.parse(data);
+            $.confirm({
+              title: 'Paciente modificado!',
+              content: data.msg,
+              buttons: {
+                OK: function () {
+                  location.reload(); 
+                }
+              }  
+            });
+          },
+          error:function(data) {
+            $.confirm({
+              title: 'Houve um erro!',
+              content: data.msg,
+              buttons: {
+                OK: function () {
+                  location.reload(); 
+                }
+              }  
+            });
+          }
+      });
+   });
+  
+  
+  
+  
+   $('.btnremovepac').on( 'click', function (e) { 
+        e.preventDefault();
+        var element = $(this);
+          let id=element.attr('idPac');
+          $.confirm({
+            title: 'Remover item!',
+            content: 'Deseja realmente deletar este paciente?',
+            buttons: {
+                Sim: function () {
+                  $.ajax({
+                        type: "POST",
+                        url: "<?= BASE_URL ?>landpage/deletePaciente",
+                        data: {id:id},
+                        success: function(msg){
+                          element.closest('tr').remove();
+                        }
+                    });
+                },
+                cancelar: function () {},
+            }
+          });
+    });
+  
+  
+    $('.btneditpac').on( 'click', function (e) { 
+      var element = $(this);
+      let id=element.closest('tr').attr('idPac');
+  
+      let nome=       element.closest('tr').find('td.td-nome').text();
+      let cns=        element.closest('tr').find('td.td-CNS').text();
+      let cpf=        element.closest('tr').find('td.td-CPF').text();
+      let datanasc=   element.closest('tr').find('td.td-data_nasc').text();
+      let mae=        element.closest('tr').find('td.td-nome_mae').text();
+      let endereco=   element.closest('tr').find('td.td-endereco').text();
+      let image=      element.closest('tr').find('td.td-img img').attr("src");
+  
+      $('#IdInput').val(id);
+      $('#nomeInput').val(nome);
+      $('#data_nascInput').val(datanasc);
+      $('#CPFInput').val(cpf);
+      $('#CNSInput').val(cns);
+      $('#nome_maeInput').val(mae);
+      $('#enderecoInput').val(endereco);
+      $('#fotoInputHiden').val(image.replace('<?= BASE_URL ?>',''));
+      $('#imgspace2').attr("src",image);
+      $('#editModal').modal('show');
+      
+    })
+        </script>
+        <script src="<?= DESIGN_PATH ?>mask/dist/jquery.mask.min.js"></script>
+    </body>
+</html>

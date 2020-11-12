@@ -1,0 +1,16 @@
+.img-pac{
+    max-width: 70%;
+}
+.td-img{
+   max-width: 57px;
+}
+.cancelbtn{
+  width: 100%;
+ }
+.modal-dialog {
+    max-width: 860px;
+    margin: 1.75rem auto;
+}
+.margin-bt20{
+    margin-bottom: 20px;
+}

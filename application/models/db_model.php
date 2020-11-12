@@ -11,7 +11,14 @@ class db_model extends CI_Model {
 		if($id){
 			$this->db->where('Id', $id);
 		}
-        return $this->db->get('pacientes')->result();
+		$pacientes = $this->db->get('pacientes')->result();
+		foreach ($pacientes as $pac) {
+			$datanasc = new DateTime($pac->data_nasc);
+			$pac->data_nasc= $datanasc->format('d/m/Y');
+		}
+		return $pacientes;
+		
+		
 	}
 	
 	public function addPacientes($POST){
@@ -19,7 +26,7 @@ class db_model extends CI_Model {
 			$data = array(
 				'nome' => $POST['nome'],
 				'nome_mae' => $POST['nome_mae'],
-				'data_nasc' => $dataNasc->format('Y-m-d H:i:s'),
+				'data_nasc' => $dataNasc->format('Y-m-d'),
 				'CPF' => $POST['CPF'],
 				'CNS' => $POST['CNS'],
 				'endereco' => $POST['endereco'],
@@ -41,21 +48,20 @@ class db_model extends CI_Model {
 	}
 	
 	public function updatePacientes($POST){
+			$dataNasc = DateTime::createFromFormat('d/m/Y', $POST['data_nasc']);
 			$data = array(
 				'nome' => $POST['nome'],
 				'nome_mae' => $POST['nome_mae'],
-				'data_nasc' => $POST['data_nasc'],
+				'data_nasc' => $dataNasc->format('Y-m-d'),
 				'CPF' => $POST['CPF'],
 				'CNS' => $POST['CNS'],
 				'endereco' => $POST['endereco'],
 				);
-			
 			$this->db->where('Id', $POST['Id']);
 			if($this->db->update('pacientes', $data)){
 				$retorno['msg']='Sucesso!';
 				$retorno['status']=true;
 				$retorno['id']=$POST['Id'];
-			
 			}
 			else{
 				$retorno['msg']='Houve algum erro!';
@@ -67,7 +73,16 @@ class db_model extends CI_Model {
 	}
 	public function deletePaciente($id){
 		if($id){
-			$this->db->where('Id', $id['id']);
+			$id=$id['id'];
+			
+			$paciente=$this->db_model->getPacientes($id);
+			$foto=$paciente[0]->foto;
+			
+			$path = dirname(dirname(dirname(__FILE__)));
+			$path=$path.'/'.$foto;
+		
+			unlink($path);
+			$this->db->where('Id', $id);
         	if($this->db->delete('pacientes')){
 				$retorno['msg']='Deletado com sucesso!';
 				$retorno['status']=true;
@@ -80,7 +95,7 @@ class db_model extends CI_Model {
 			$retorno['msg']='Paciente não informado!';
 			$retorno['status']=false;
 		}
-		return $retorno;
+		return json_encode($retorno);
 	}
 
 	public function addArquivo($id, $path){
