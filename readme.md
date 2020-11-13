@@ -48,4 +48,4 @@ Alterar linhas:
 'database' => 'pacientes_db',   // Nome do banco
 ```
 
-by Lari Moro with :love:
+by Lari Moro with :heart:
