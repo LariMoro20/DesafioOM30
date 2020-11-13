@@ -37,7 +37,7 @@ Alterar linha:
 defined('BASE_URL') or define('BASE_URL','https://localhost/TesteOM/'); //Mudar para a pasta onde o projeto for instalado
 ```
 
-* Criar banco de dados e rodar o sql presente na raiz do projeto ``` sql_tabelas.sql ```
+* Criar banco de dados e rodar o sql presente na raiz do projeto ``` pacientes_db.sql ```
 
 * Editar arquivo de banco de dados ``` aplication/config/database.php ```
 Alterar linhas:
