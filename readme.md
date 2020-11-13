@@ -18,17 +18,14 @@ Aplicação conta com:
 
 * Edição de pacientes;
 * Visualização de pacientes;
-
 * Máscara para CPF, CNS e Data;
-* Busca de endereço por CEP via API ViaCEP **https://viacep.com.br/**;
 * Validação de CPF;
 * Validação de data;
-
+* Busca de endereço por CEP via API ViaCEP: **https://viacep.com.br/**;
 
 ## Requerimentos
 
 * Necessário PHP > 5.6
-
 
 
 ## Instalação
@@ -40,6 +37,8 @@ Alterar linha:
 defined('BASE_URL') or define('BASE_URL','https://localhost/TesteOM/'); //Mudar para a pasta onde o projeto for instalado
 ```
 
+* Criar banco de dados e rodar o sql presente na raiz do projeto ``` sql_tabelas.sql ```
+
 * Editar arquivo de banco de dados ``` aplication/config/database.php ```
 Alterar linhas:
 ```
@@ -49,3 +48,4 @@ Alterar linhas:
 'database' => 'pacientes_db',   // Nome do banco
 ```
 
+by Lari Moro with :love:
