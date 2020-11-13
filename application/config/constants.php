@@ -85,7 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // Site customs
-defined('SITE_NAME') or define('SITE_NAME','CadastroOM');
+defined('SITE_NAME') or define('SITE_NAME','Cadastro OM30');
 defined('SITE_DESC') or define('SITE_DESC','Cadastro de pacientes');
 
 // Custom constants 

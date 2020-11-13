@@ -3,7 +3,7 @@
 
 Esta é uma aplicação de cadastro de clientes, desenvolvida com o propósito de demonstrar conhecimentos para a empresa.
 * Conhecimentos aplicados: PHP, MySQL, HTML, CSS e JavaScript;
-* Frameworks aplicados: CodeIgniter e Bootstrap;
+* Frameworks aplicados: CodeIgniter 3 e Bootstrap 4;
 * Biblioteca: JQuery;
 
 Aplicação conta com:
@@ -47,5 +47,7 @@ Alterar linhas:
 'password' => '',               // Senha
 'database' => 'pacientes_db',   // Nome do banco
 ```
+
+Documentação CodeIgniter: **https://codeigniter.com/docs**
 
 by Lari Moro with :heart:
