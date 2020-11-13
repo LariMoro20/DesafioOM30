@@ -8,9 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" type="image/x-icon" href="<?= DESIGN_PATH ?>img/logo.png">
+    
     <meta name="description" content="Projeto de cadastro de pacientes">
     <meta name="author" content="Larissa Moro de Souza dos Santos">
-    <meta name="keywords" content="Interior, Decoração, Casa, Arquitetura, Móveis,personalização">
+    <meta name="keywords" content="saude, medicina, empresa">
     
     <meta property="og:description" content="Projeto de cadastro de pacientes" />
     <meta property="og:title" content="<?= SITE_NAME ?>" />
