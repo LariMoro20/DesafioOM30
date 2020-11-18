@@ -1,7 +1,7 @@
 ## Desafio OM30
 
 
-Esta é uma aplicação de cadastro de pacientes, desenvolvida com o propósito de demonstrar conhecimentos para a empresa.
+Esta é uma aplicação de cadastro de pacientes, desenvolvida com o propósito de demonstrar conhecimentos
 * Conhecimentos aplicados: PHP, MySQL, HTML, CSS e JavaScript;
 * Frameworks aplicados: CodeIgniter 3 e Bootstrap 4;
 * Biblioteca: JQuery;
