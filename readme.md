@@ -1,4 +1,4 @@
-## Desafio OM30
+## Desafio: aplicação de cadastro de pacientes básica
 
 
 Esta é uma aplicação de cadastro de pacientes, desenvolvida com o propósito de demonstrar conhecimentos
